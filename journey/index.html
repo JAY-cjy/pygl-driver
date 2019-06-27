@@ -16,9 +16,9 @@
     <div id="journey" v-cloak>
         <div class="title">日程</div>
         <div class="bar">
-            <div v-on:click="changeDateType" data-dateType="day">本日</div>
-            <div v-on:click="changeDateType" data-dateType="week">本周</div>
-            <div style="position: absolute; right: 0; pointer-events: none; z-index: 2; background: white;">本月</div>
+            <div v-on:click="changeDateType" data-dateType="day"  v-bind:class="[showDate == 'day' ? 'selected' : '']">本日</div>
+            <div v-on:click="changeDateType" data-dateType="week" v-bind:class="[showDate == 'week' ? 'selected' : '']">本周</div>
+            <div style="position: absolute; right: 0; pointer-events: none; z-index: 2;" v-bind:class="[showDate == 'month' ? 'selected' : '']">本月</div>
         </div>
 
         <div id="date" v-on:click="changeDateType" data-dateType="month">{{nowDate}}</div>
@@ -35,13 +35,13 @@
             <div class="content" v-for="(item, index) in details" :key="index" v-on:click="goToDetails(item.date)" v-cloak>
                 <div>{{index + 1}}</div>
                 <div>{{item.bhours}}</div>
-                <div>{{item.baotype == 0 ? '包车' : ''}}{{item.baotype == 1 ? '送机' : ''}}{{item.baotype == 3 ? '接机' : ''}}
+                <div>{{item.baotype == 0 ? '包车' : ''}}{{item.baotype == 1 ? '送机' : ''}}{{item.baotype == 2 ? '接机' : ''}}
                 </div>
                 <div>{{item.origin}}</div>
                 <div>{{item.destination}}</div>
                 <div>{{index + 1}}</div>
                 <div>{{item.ehours}}</div>
-                <div>{{item.baotype == 0 ? '包车' : ''}}{{item.baotype == 1 ? '送机' : ''}}{{item.baotype == 3 ? '接机' : ''}}
+                <div>{{item.baotype == 0 ? '包车' : ''}}{{item.baotype == 1 ? '送机' : ''}}{{item.baotype == 2 ? '接机' : ''}}
                 </div>
                 <div>{{item.origin}}</div>
                 <div>{{item.destination}}</div>
@@ -49,7 +49,7 @@
             <div v-if="details == ''" v-cloak>暂无行程</div>
         </div>
 
-        <div class="month" v-show="showDate == 'week'" v-cloak>
+        <div class="week" v-show="showDate == 'week'" v-cloak>
             <div class="box">
                 <div></div>
                 <div>日期</div>
@@ -61,7 +61,7 @@
             <div class="content" v-for="(item, index) in details" :key="index">
                 <div>{{weekArr[item.week - 1 ]}}</div>
                 <div>{{item.date}}</div>
-                <div>{{item.baotype == 0 ? '包车' : ''}}{{item.baotype == 1 ? '送机' : ''}}{{item.baotype == 3 ? '接机' : ''}}
+                <div>{{item.baotype == 0 ? '包车' : ''}}{{item.baotype == 1 ? '送机' : ''}}{{item.baotype == 2 ? '接机' : ''}}
                 </div>
                 <div>{{item.bhours}}</div>
                 <div>{{item.destination}}</div>

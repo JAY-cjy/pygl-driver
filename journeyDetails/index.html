@@ -13,9 +13,9 @@
     <div id="journeyDetails" v-cloak>
         <div class="title">订单详情</div>
         <div class="bar">
-            <div v-on:click="changeCarType" data-dateType="package">按天包车</div>
-            <div v-on:click="changeCarType" data-dateType="join">接机</div>
-            <div v-on:click="changeCarType" data-dateType="present">送机</div>
+            <div v-on:click="changeCarType" data-dateType="package" v-bind:class="[carType == 'package' ? 'selected' : '']">按天包车</div>
+            <div v-on:click="changeCarType" data-dateType="join" v-bind:class="[carType == 'join' ? 'selected' : '']">接机</div>
+            <div v-on:click="changeCarType" data-dateType="present" v-bind:class="[carType == 'present' ? 'selected' : '']">送机</div>
         </div>
 
         <div class="package" v-show="carType == 'package'">

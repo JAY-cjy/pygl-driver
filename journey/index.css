@@ -18,7 +18,9 @@ body {
 #journey .title {
   font-size: 18px;
   font-weight: 900;
-  line-height: 30px;
+  line-height: 48px;
+  background-color: #2fa4e7;
+  color: #ffffff;
   border-bottom: 1px solid black;
 }
 #journey .bar {
@@ -32,6 +34,7 @@ body {
   width: 33.333%;
   box-sizing: border-box;
   border-right: 1px solid black;
+  background: white;
 }
 #journey .bar div:nth-child(1) {
   border-left: 1px solid black;
@@ -43,11 +46,15 @@ body {
   border: 1px solid black;
   box-sizing: border-box;
   position: absolute;
-  top: 30px;
+  top: 48px;
   right: 0;
 }
+#journey .selected {
+  background-color: #2fa4e7 !important;
+  color: #ffffff;
+}
 #journey .day .box,
-#journey .month .box {
+#journey .week .box {
   display: flex;
   align-content: center;
   text-align: center;
@@ -55,37 +62,37 @@ body {
   border-bottom: 1px solid black;
 }
 #journey .day .box div,
-#journey .month .box div {
+#journey .week .box div {
   width: 20%;
   box-sizing: border-box;
   border-right: 1px solid black;
 }
 #journey .day .box div:nth-child(1),
-#journey .month .box div:nth-child(1) {
+#journey .week .box div:nth-child(1) {
   border-left: 1px solid black;
 }
 #journey .day .content,
-#journey .month .content {
+#journey .week .content {
   display: flex;
   justify-content: center;
   text-align: center;
   flex-wrap: wrap;
 }
 #journey .day .content div,
-#journey .month .content div {
+#journey .week .content div {
   width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 14px;
 }
-#journey .month .content {
+#journey .week .content {
   display: flex;
   justify-content: center;
   text-align: center;
   flex-wrap: wrap;
 }
-#journey .month .content div {
+#journey .week .content div {
   width: 20%;
   display: flex;
   justify-content: center;

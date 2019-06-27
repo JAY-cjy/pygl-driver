@@ -20,8 +20,11 @@ body {
     .title {
         font-size: 18px;
         font-weight: 900;
-        line-height: 30px;
+        line-height: 48px;
+        background-color: #2fa4e7;
+        color: #ffffff;
         border-bottom: 1px solid black;
+        // margin-bottom: 10px;
     }
 
     .bar {
@@ -35,7 +38,7 @@ body {
             width: 33.333%;
             box-sizing: border-box;
             border-right: 1px solid black;
-
+            background: white;
         }
 
         div:nth-child(1) {
@@ -50,13 +53,18 @@ body {
         border: 1px solid black;
         box-sizing: border-box;
         position: absolute;
-        top: 30px;
+        top: 48px;
         right: 0;
         // z-index: -1;
     }
 
+    .selected {
+        background-color: #2fa4e7 !important;
+        color: #ffffff;
+    }
+
     .day,
-    .month {
+    .week {
         .box {
             display: flex;
             align-content: center;
@@ -92,7 +100,7 @@ body {
         }
     }
 
-    .month {
+    .week {
         .content {
             display: flex;
             justify-content: center;

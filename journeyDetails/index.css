@@ -18,7 +18,9 @@ body {
 #journeyDetails .title {
   font-size: 18px;
   font-weight: 900;
-  line-height: 30px;
+  line-height: 48px;
+  background-color: #2fa4e7;
+  color: #ffffff;
   border-bottom: 1px solid black;
 }
 #journeyDetails .bar {
@@ -35,6 +37,10 @@ body {
 }
 #journeyDetails .bar div:nth-child(1) {
   border-left: 1px solid black;
+}
+#journeyDetails .bar .selected {
+  background-color: #2fa4e7 !important;
+  color: #ffffff;
 }
 #journeyDetails .package .box,
 #journeyDetails .join .box,

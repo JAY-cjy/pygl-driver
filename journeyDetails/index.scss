@@ -21,7 +21,9 @@ body {
     .title {
         font-size: 18px;
         font-weight: 900;
-        line-height: 30px;
+        line-height: 48px;
+        background-color: #2fa4e7;
+        color: #ffffff;
         border-bottom: 1px solid black;
     }
 
@@ -42,19 +44,14 @@ body {
         div:nth-child(1) {
             border-left: 1px solid black;
         }
+
+        .selected {
+            background-color: #2fa4e7 !important;
+            color: #ffffff;
+        }
     }
 
-    // .package {
-    //     overflow: hidden;
 
-    //     div {
-    //         float: left;
-
-    //         div {
-    //             width: 50%;
-    //         }
-    //     }
-    // }
     .package,
     .join,
     .present {
