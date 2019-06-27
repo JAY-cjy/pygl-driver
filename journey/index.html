@@ -7,16 +7,86 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>journey</title>
     <link rel="stylesheet" href="index.css">
+    <!-- ele引入样式 -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
 
 </head>
 
 <body>
-    <div id="app">
-        {{ message }} {{jay}}
+    <div id="journey" v-cloak>
+        <div class="title">日程</div>
+        <div class="bar">
+            <div v-on:click="changeDateType" data-dateType="day">本日</div>
+            <div v-on:click="changeDateType" data-dateType="week">本周</div>
+            <div style="position: absolute; right: 0; pointer-events: none; z-index: 2; background: white;">本月</div>
+        </div>
+
+        <div id="date" v-on:click="changeDateType" data-dateType="month">{{nowDate}}</div>
+
+        <div class="day" v-show="showDate == 'day'">
+            <div class="box">
+                <div>行程</div>
+                <div>时间</div>
+                <div>包车类型</div>
+                <div>出发地</div>
+                <div>目的地</div>
+            </div>
+
+            <div class="content" v-for="(item, index) in details" :key="index" v-on:click="goToDetails(item.date)" v-cloak>
+                <div>{{index + 1}}</div>
+                <div>{{item.bhours}}</div>
+                <div>{{item.baotype == 0 ? '包车' : ''}}{{item.baotype == 1 ? '送机' : ''}}{{item.baotype == 3 ? '接机' : ''}}
+                </div>
+                <div>{{item.origin}}</div>
+                <div>{{item.destination}}</div>
+                <div>{{index + 1}}</div>
+                <div>{{item.ehours}}</div>
+                <div>{{item.baotype == 0 ? '包车' : ''}}{{item.baotype == 1 ? '送机' : ''}}{{item.baotype == 3 ? '接机' : ''}}
+                </div>
+                <div>{{item.origin}}</div>
+                <div>{{item.destination}}</div>
+            </div>
+            <div v-if="details == ''" v-cloak>暂无行程</div>
+        </div>
+
+        <div class="month" v-show="showDate == 'week'" v-cloak>
+            <div class="box">
+                <div></div>
+                <div>日期</div>
+                <div>包车类型</div>
+                <div>出发时间</div>
+                <div>目的地</div>
+            </div>
+
+            <div class="content" v-for="(item, index) in details" :key="index">
+                <div>{{weekArr[item.week - 1 ]}}</div>
+                <div>{{item.date}}</div>
+                <div>{{item.baotype == 0 ? '包车' : ''}}{{item.baotype == 1 ? '送机' : ''}}{{item.baotype == 3 ? '接机' : ''}}
+                </div>
+                <div>{{item.bhours}}</div>
+                <div>{{item.destination}}</div>
+            </div>
+            <div v-show="details == ''">暂无行程</div>
+        </div>
+
+        <div class="year"></div>
+        <!-- <div class="block">
+            <span class="demonstration">默认</span>
+            <el-date-picker v-model="value1" type="date" placeholder="选择日期">
+            </el-date-picker>
+        </div> -->
+        <!-- <input type="hidden"> -->
     </div>
-
-
+    <!-- layDate引入 -->
+    <script src="../layDate-v5.0.9/laydate/laydate.js"></script>
+    <!-- vue引入 -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- voe-router引入 -->
+    <!-- <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
+    <!-- jq引入 -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <!-- ele引入组件库 -->
+    <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
     <script src="index.js"></script>
 </body>
 

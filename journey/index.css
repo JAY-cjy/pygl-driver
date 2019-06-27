@@ -2,11 +2,123 @@ html,
 body {
   width: 100%;
   height: 100%;
+  margin: 0;
+  background: #f8f8f8;
 }
 
-#app {
+[v-cloak] {
+  display: none;
+}
+
+#journey {
   width: auto;
   text-align: center;
+  background: white;
+}
+#journey .title {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 30px;
+  border-bottom: 1px solid black;
+}
+#journey .bar {
+  display: flex;
+  align-content: center;
+  text-align: center;
+  line-height: 30px;
+  border-bottom: 1px solid black;
+}
+#journey .bar div {
+  width: 33.333%;
+  box-sizing: border-box;
+  border-right: 1px solid black;
+}
+#journey .bar div:nth-child(1) {
+  border-left: 1px solid black;
+}
+#journey #date {
+  width: 33.333%;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid black;
+  box-sizing: border-box;
+  position: absolute;
+  top: 30px;
+  right: 0;
+}
+#journey .day .box,
+#journey .month .box {
+  display: flex;
+  align-content: center;
+  text-align: center;
+  line-height: 30px;
+  border-bottom: 1px solid black;
+}
+#journey .day .box div,
+#journey .month .box div {
+  width: 20%;
+  box-sizing: border-box;
+  border-right: 1px solid black;
+}
+#journey .day .box div:nth-child(1),
+#journey .month .box div:nth-child(1) {
+  border-left: 1px solid black;
+}
+#journey .day .content,
+#journey .month .content {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+#journey .day .content div,
+#journey .month .content div {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+#journey .month .content {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+#journey .month .content div {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
 }
 
-/*# sourceMappingURL=index.css.map */
+.layui-laydate {
+  width: 100%;
+  height: 400px;
+  position: absolute;
+  left: 0 !important;
+  right: 0;
+  margin: 0 !important;
+}
+.layui-laydate .layui-laydate-main {
+  width: 100%;
+}
+.layui-laydate .layui-laydate-main .layui-laydate-content td {
+  width: 51px;
+  height: 51px;
+}
+.layui-laydate .layui-laydate-main .layui-laydate-content td .laydate-day-mark {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  line-height: normal;
+  overflow: hidden;
+}
+.layui-laydate .laydate-footer-btns span {
+  height: 35px;
+  line-height: 35px;
+}

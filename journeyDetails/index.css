@@ -1,0 +1,50 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: #f8f8f8;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+#journeyDetails {
+  width: auto;
+  text-align: center;
+  background: white;
+}
+#journeyDetails .title {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 30px;
+  border-bottom: 1px solid black;
+}
+#journeyDetails .bar {
+  display: flex;
+  align-content: center;
+  text-align: center;
+  line-height: 30px;
+  border-bottom: 1px solid black;
+}
+#journeyDetails .bar div {
+  width: 33.333%;
+  box-sizing: border-box;
+  border-right: 1px solid black;
+}
+#journeyDetails .bar div:nth-child(1) {
+  border-left: 1px solid black;
+}
+#journeyDetails .package .box,
+#journeyDetails .join .box,
+#journeyDetails .present .box {
+  border-bottom: 1px solid black;
+  overflow: hidden;
+}
+#journeyDetails .package .box div,
+#journeyDetails .join .box div,
+#journeyDetails .present .box div {
+  float: left;
+  width: 50%;
+}

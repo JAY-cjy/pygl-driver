@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>journeyDetails</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="journeyDetails" v-cloak>
+        <div class="title">订单详情</div>
+        <div class="bar">
+            <div v-on:click="changeCarType" data-dateType="package">按天包车</div>
+            <div v-on:click="changeCarType" data-dateType="join">接机</div>
+            <div v-on:click="changeCarType" data-dateType="present">送机</div>
+        </div>
+
+        <div class="package" v-show="carType == 'package'">
+            <div class="box" v-for="(item, index) in package" :key="index">
+                <div>出发地：</div>
+                <div>{{item.origin}}</div>
+                <div>目的地：</div>
+                <div>{{item.destination}}</div>
+                <div>出发时间：</div>
+                <div>{{item.bhours}}</div>
+                <div>工作时长：</div>
+                <div>{{item.workHours}}</div>
+                <div>天数：</div>
+                <div>{{item.days}}</div>
+                <div>客户名称：</div>
+                <div>{{item.lmName}}</div>
+                <div>联系方式：</div>
+                <div>{{item.lmPhone}}</div>
+            </div>
+            <div v-show="package == ''">暂无行程</div>
+        </div>
+
+        <div class="join" v-show="carType == 'join'">
+            <div class="box" v-for="(item, index) in join" :key="index">
+                <div>日程：</div><div>{{index + 1 }}</div>
+                <div>接机日期：</div><div>{{item.date}}</div>
+                <div>时间：</div><div>{{item.bhours}}</div>
+                <div>航班号：</div><div>{{item.hangban}}</div>
+                <div>机场名称：</div><div>{{item.origin}}</div>
+                <div>目的地：</div><div>{{item.destination}}</div>
+                <div>客户名称：</div><div>{{item.lmName}}</div>
+                <div>联系方式：</div><div>{{item.lmPhone}}</div>
+                <div>接机牌：</div><div>{{item.lmPickUp}}</div>
+            </div>
+            <div v-show="join == ''">暂无行程</div>
+        </div>
+
+        <div class="present" v-show="carType == 'present'">
+            <div class="box" v-for="(item, index) in present" :key="index">
+                <div>日程：</div><div>{{index + 1 }}</div>
+                <div>送机日期:</div><div>{{item.date}}</div>
+                <div>出发时间：</div><div>{{item.bhours}}</div>
+                <div>出发地点：</div><div>{{item.origin}}</div>
+                <div>机场名称：</div><div>{{item.destination}}</div>
+                <div>客户名称：</div><div>{{item.lmName}}</div>
+                <div>联系方式：</div><div>{{item.lmPhone}}</div>
+            </div>
+            <div v-show="present == ''">暂无行程</div>
+        </div>
+    </div>
+    <!-- vue引入 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- voe-router引入 -->
+    <!-- <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
+    <!-- jq引入 -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
