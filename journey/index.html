@@ -15,6 +15,7 @@
 <body>
     <div id="journey" v-cloak>
         <div class="title">日程</div>
+        <a class="back" href="javascript:history.go(-1);"></a>
         <div class="bar">
             <div v-on:click="changeDateType" data-dateType="day"  v-bind:class="[showDate == 'day' ? 'selected' : '']">本日</div>
             <div v-on:click="changeDateType" data-dateType="week" v-bind:class="[showDate == 'week' ? 'selected' : '']">本周</div>

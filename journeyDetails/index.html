@@ -12,10 +12,14 @@
 <body>
     <div id="journeyDetails" v-cloak>
         <div class="title">订单详情</div>
+        <a class="back" href="javascript:history.go(-1);"></a>
         <div class="bar">
-            <div v-on:click="changeCarType" data-dateType="package" v-bind:class="[carType == 'package' ? 'selected' : '']">按天包车</div>
-            <div v-on:click="changeCarType" data-dateType="join" v-bind:class="[carType == 'join' ? 'selected' : '']">接机</div>
-            <div v-on:click="changeCarType" data-dateType="present" v-bind:class="[carType == 'present' ? 'selected' : '']">送机</div>
+            <div v-on:click="changeCarType" data-dateType="package"
+                v-bind:class="[carType == 'package' ? 'selected' : '']">按天包车</div>
+            <div v-on:click="changeCarType" data-dateType="join" v-bind:class="[carType == 'join' ? 'selected' : '']">接机
+            </div>
+            <div v-on:click="changeCarType" data-dateType="present"
+                v-bind:class="[carType == 'present' ? 'selected' : '']">送机</div>
         </div>
 
         <div class="package" v-show="carType == 'package'">
@@ -40,28 +44,44 @@
 
         <div class="join" v-show="carType == 'join'">
             <div class="box" v-for="(item, index) in join" :key="index">
-                <div>日程：</div><div>{{index + 1 }}</div>
-                <div>接机日期：</div><div>{{item.date}}</div>
-                <div>时间：</div><div>{{item.bhours}}</div>
-                <div>航班号：</div><div>{{item.hangban}}</div>
-                <div>机场名称：</div><div>{{item.origin}}</div>
-                <div>目的地：</div><div>{{item.destination}}</div>
-                <div>客户名称：</div><div>{{item.lmName}}</div>
-                <div>联系方式：</div><div>{{item.lmPhone}}</div>
-                <div>接机牌：</div><div>{{item.lmPickUp}}</div>
+                <div>日程：</div>
+                <div>{{index + 1 }}</div>
+                <div>接机日期：</div>
+                <div>{{item.date}}</div>
+                <div>时间：</div>
+                <div>{{item.bhours}}</div>
+                <div>航班号：</div>
+                <div>{{item.hangban}}</div>
+                <div>机场名称：</div>
+                <div>{{item.origin}}</div>
+                <div>目的地：</div>
+                <div>{{item.destination}}</div>
+                <div>客户名称：</div>
+                <div>{{item.lmName}}</div>
+                <div>联系方式：</div>
+                <div>{{item.lmPhone}}</div>
+                <div>接机牌：</div>
+                <div>{{item.lmPickUp}}</div>
             </div>
             <div v-show="join == ''">暂无行程</div>
         </div>
 
         <div class="present" v-show="carType == 'present'">
             <div class="box" v-for="(item, index) in present" :key="index">
-                <div>日程：</div><div>{{index + 1 }}</div>
-                <div>送机日期:</div><div>{{item.date}}</div>
-                <div>出发时间：</div><div>{{item.bhours}}</div>
-                <div>出发地点：</div><div>{{item.origin}}</div>
-                <div>机场名称：</div><div>{{item.destination}}</div>
-                <div>客户名称：</div><div>{{item.lmName}}</div>
-                <div>联系方式：</div><div>{{item.lmPhone}}</div>
+                <div>日程：</div>
+                <div>{{index + 1 }}</div>
+                <div>送机日期:</div>
+                <div>{{item.date}}</div>
+                <div>出发时间：</div>
+                <div>{{item.bhours}}</div>
+                <div>出发地点：</div>
+                <div>{{item.origin}}</div>
+                <div>机场名称：</div>
+                <div>{{item.destination}}</div>
+                <div>客户名称：</div>
+                <div>{{item.lmName}}</div>
+                <div>联系方式：</div>
+                <div>{{item.lmPhone}}</div>
             </div>
             <div v-show="present == ''">暂无行程</div>
         </div>

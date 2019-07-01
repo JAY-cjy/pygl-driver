@@ -8,7 +8,7 @@ var vm = new Vue({
         showDate: 'day',
         weekArr: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
         mark: {},
-        temp:'true',
+        temp: 'true',
     },
 
     mounted() {
@@ -70,10 +70,10 @@ var vm = new Vue({
 
             // 获取上下两个月的行程
             console.log(that.nowDate);
-            if(that.temp){
-                if(that.layDate){
+            if (that.temp) {
+                if (that.layDate) {
                     var month = that.layDate.substring(5, 7);
-                }else{
+                } else {
                     var month = that.nowDate.substring(5, 7);
                 }
                 let lastDate = parseInt(month) - 1 + '';
@@ -85,7 +85,7 @@ var vm = new Vue({
                 } else {
                     lastDate = that.nowDate.substring(0, 4) + '-' + lastDate + '-' + '01';
                 }
-    
+
                 if (nextDate.substring(0, 1) != '0') {
                     nextDate = that.nowDate.substring(0, 4) + '-0' + nextDate + '-' + '01';
                 } else {
@@ -152,7 +152,19 @@ var vm = new Vue({
                                 value = '接机';
                             }
 
-                            that.mark[date2] = value;
+                            // 判断包车，送机等情况是否同时存在
+                            if (that.mark[date2] != value && that.mark[date2]) {
+                                console.log(that.mark[date2], value)
+                                if (that.mark[date2].substring(0, 2) != value && that.mark[date2].length < 2) {
+                                    that.mark[date2] = that.mark[date2] + ' ' + value;
+                                } else if(that.mark[date2].substring(0, 2) != value && that.mark[date2].substring(3, 5) != value && that.mark[date2].length < 5)  {
+                                    that.mark[date2] = that.mark[date2] + ' ' + value;
+                                }
+                                console.log(that.mark[date2])
+                                console.log((that.mark[date2].substring(0, 2) != value), (that.mark[date2].substring(3, 5) != value))
+                            } else {
+                                that.mark[date2] = value;
+                            }
 
                         }
                         // that.mark = mark;
@@ -212,8 +224,20 @@ var vm = new Vue({
                             } else {
                                 value = '接机';
                             }
-                            // console.log(that.mark,value)
-                            that.mark[date2] = value;
+
+                            // 判断包车，送机等情况是否同时存在
+                            if (that.mark[date2] != value && that.mark[date2]) {
+                                console.log(that.mark[date2], value)
+                                if (that.mark[date2].substring(0, 2) != value && that.mark[date2].length < 2) {
+                                    that.mark[date2] = that.mark[date2] + ' ' + value;
+                                } else if(that.mark[date2].substring(0, 2) != value && that.mark[date2].substring(3, 5) != value && that.mark[date2].length < 5)  {
+                                    that.mark[date2] = that.mark[date2] + ' ' + value;
+                                }
+                                console.log(that.mark[date2])
+                                console.log((that.mark[date2].substring(0, 2) != value), (that.mark[date2].substring(3, 5) != value))
+                            } else {
+                                that.mark[date2] = value;
+                            }
                         }
                         // that.mark = mark;
                         console.log(that.mark)

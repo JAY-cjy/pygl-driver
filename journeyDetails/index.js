@@ -48,9 +48,9 @@ var vm = new Vue({
                     if (that.details[0].baotype == '0') {
                         value = 'package';
                     } else if (that.details[0].baotype == '1') {
-                        value = 'join';
-                    } else {
                         value = 'present';
+                    } else {
+                        value = 'join';
                     }
                     that.carType = value;
                 },
