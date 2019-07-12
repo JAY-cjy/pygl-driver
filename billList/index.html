@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>billList</title>
+    <link rel="stylesheet" href="../public/cssReset.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="billList" v-cloak>
+        <header>
+            <div class="title">订单列表</div>
+            <a class="back" href="javascript:history.go(-1);"></a>
+        </header>
+
+        <main>
+            <div style="margin: 0 0.1rem .1rem;"><img src="load.gif" height="20"></div>
+            <div class="billText" v-show="billText">{{billText}}</div>
+
+            <ul>
+                <li v-for="(item, index) in billDdetails" :key="index">
+                    <h4>{{item.orderOfTime}}</h4>
+                    <p>
+                        <span>{{item.deparCity}}<small>起点</small></span>
+                        <span>>>></span>
+                        <span>{{item.drivingRout}}<small>终点</small></span>
+                    </p>
+                    <div class="robBill" v-on:click="robBill(item.id)">抢单</div>
+                </li>
+            </ul>
+        </main>
+    </div>
+
+
+    <!-- vue引入 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- jq引入 -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

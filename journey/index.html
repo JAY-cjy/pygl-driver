@@ -15,11 +15,12 @@
 <body>
     <div id="journey" v-cloak>
         <div class="title">日程</div>
+        <div class="bill" v-on:click="robBill">{{billType}}</div>
         <a class="back" href="javascript:history.go(-1);"></a>
         <div class="bar">
             <div v-on:click="changeDateType" data-dateType="day"  v-bind:class="[showDate == 'day' ? 'selected' : '']">本日</div>
             <div v-on:click="changeDateType" data-dateType="week" v-bind:class="[showDate == 'week' ? 'selected' : '']">本周</div>
-            <div style="position: absolute; right: 0; pointer-events: none; z-index: 2;" v-bind:class="[showDate == 'month' ? 'selected' : '']">本月</div>
+            <div style="position: absolute; right: 0; pointer-events: none; z-index: 2;border-bottom: 1px solid black;" v-bind:class="[showDate == 'month' ? 'selected' : '']">本月</div>
         </div>
 
         <div id="date" v-on:click="changeDateType" data-dateType="month">{{nowDate}}</div>

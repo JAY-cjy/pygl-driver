@@ -9,6 +9,8 @@ var vm = new Vue({
         weekArr: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
         mark: {},
         temp: 'true',
+        // 抢单类型
+        billType: '',
     },
 
     mounted() {
@@ -26,7 +28,8 @@ var vm = new Vue({
         var nowDate = year + "-" + month + "-" + day;
         this.nowDate = nowDate;
 
-
+        // 获取抢单类型
+        this.getBill();
 
         // 获取天行程
         this.getDetails('day', this.nowDate);
@@ -107,6 +110,7 @@ var vm = new Vue({
             // }
 
         },
+
         // 获取页面初始数据
         getDetails: function (str, date) {
             var that = this;
@@ -157,7 +161,7 @@ var vm = new Vue({
                                 console.log(that.mark[date2], value)
                                 if (that.mark[date2].substring(0, 2) != value && that.mark[date2].length < 2) {
                                     that.mark[date2] = that.mark[date2] + ' ' + value;
-                                } else if(that.mark[date2].substring(0, 2) != value && that.mark[date2].substring(3, 5) != value && that.mark[date2].length < 5)  {
+                                } else if (that.mark[date2].substring(0, 2) != value && that.mark[date2].substring(3, 5) != value && that.mark[date2].length < 5) {
                                     that.mark[date2] = that.mark[date2] + ' ' + value;
                                 }
                                 console.log(that.mark[date2])
@@ -179,6 +183,7 @@ var vm = new Vue({
                 }
             })
         },
+
         // 获取layui初始数据
         getDetails2: function (str, date) {
             var that = this;
@@ -230,7 +235,7 @@ var vm = new Vue({
                                 console.log(that.mark[date2], value)
                                 if (that.mark[date2].substring(0, 2) != value && that.mark[date2].length < 2) {
                                     that.mark[date2] = that.mark[date2] + ' ' + value;
-                                } else if(that.mark[date2].substring(0, 2) != value && that.mark[date2].substring(3, 5) != value && that.mark[date2].length < 5)  {
+                                } else if (that.mark[date2].substring(0, 2) != value && that.mark[date2].substring(3, 5) != value && that.mark[date2].length < 5) {
                                     that.mark[date2] = that.mark[date2] + ' ' + value;
                                 }
                                 console.log(that.mark[date2])
@@ -250,21 +255,134 @@ var vm = new Vue({
                 }
             })
         },
+
         // 改变日期显示类型
         changeDateType: function (e) {
-            // console.log(e.target.dataset.datetype)
+            console.log(e.target.dataset.datetype)
             var showDate = e.target.dataset.datetype;
             // this.showDate = showDate;
             this.getDetails(showDate, this.nowDate);
         },
-        // 重新挂载日历
-        again: function (e) {
 
-        },
         // 页面跳转
         goToDetails: function (e) {
             console.log(e)
             window.location.href = "../journeyDetails/index.html?date=" + e;
+        },
+
+        // 获取抢单类型
+        getBill() {
+            var that = this;
+            $.ajax({
+                type: 'POST',
+                url: "http://192.168.0.152:8080/pyerp/busOrder/queryModel.action",
+                data: {},
+                dataType: 'json',
+                success: function (res) {
+                    //请求成功函数内容
+                    console.log(res)
+
+                    // 先把返回值写死
+                    // 自动配单
+                    // that.billType = '开始接单'
+
+                    that.billType = '开始抢单'
+
+                    // if (res.status == '200') {
+                    //     if (res.msg == '0') {
+                    //         // 自动配单
+                    //         that.billType = '开始接单'
+
+                    //     }
+
+                    //     if (res.msg == '1') {
+                    //         // 抢单
+                    //         that.billType = '开始抢单'
+
+                    //     }
+                    // }
+
+                    // if (res.status == '300') {
+                    //     alert(res.msg)
+                    // }
+
+                },
+                error: function (res) {
+                    //请求失败函数内容
+                }
+            })
+        },
+
+        // 点击抢单
+        robBill() {
+            if (this.billType == '开始接单') {
+                this.billType = '结束接单';
+
+                // 发送请求
+                $.ajax({
+                    type: 'POST',
+                    url: "http://192.168.0.152:8080/pyerp/busOrder/driverSetWeek.action",
+                    data: {
+                        status: 1,
+                    },
+                    dataType: 'json',
+                    success: function (res) {
+                        //请求成功函数内容
+                        console.log(res)
+
+                        if (res.status == '200') {
+                            alert('已进入接单状态')
+                        } else if (res.status == '300') {
+                            alert(res.msg)
+                        } else if (res.status == '500') {
+                            alert("服务器异常")
+                        }
+
+                    },
+                    error: function (res) {
+                        //请求失败函数内容
+                    }
+                })
+
+                return;
+            }
+
+            if (this.billType == '结束接单') {
+                this.billType = '开始接单';
+
+                // 发送请求
+                $.ajax({
+                    type: 'POST',
+                    url: "http://192.168.0.152:8080/pyerp/busOrder/driverSetWeek.action",
+                    data: {
+                        status: 0,
+                    },
+                    dataType: 'json',
+                    success: function (res) {
+                        //请求成功函数内容
+                        console.log(res)
+
+                        if (res.status == '200') {
+                            alert('已退出接单状态')
+                        } else if (res.status == '300') {
+                            alert(res.msg)
+                        } else if (res.status == '500') {
+                            alert("服务器异常")
+                        }
+
+                    },
+                    error: function (res) {
+                        //请求失败函数内容
+                    }
+                })
+                return;
+            }
+
+            if(this.billType == '开始抢单'){
+                // 跳转页面，显示订单列表
+                window.location.href = "../billList/index.html";
+            }
+
         },
     },
 })
